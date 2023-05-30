@@ -5,31 +5,27 @@
 }
 
 :root {
-  --bg-color: #121214;
+  --bg-color: hsl(0, 0%, 100%);
+  --bg-color-dark: hsl(0, 0%, 0%);
 
-  --base-color: 694;
-  --bg-primary-light: hsla(var(--base-color), 100%, 63%, 0.13);
-  --primary-color: hsl(var(--base-color), 100%, 63%);
-
-  --text-color: #FFFFFF;
+  
+  --text-color: #000000;
+  --text-dark-color: #ffffff;
+  --buttons-color: #0000ff;
+  --selected-color: #02799D;
+  --buttons-dark-color: #ffffff;
 
   font-size: 62.5%;
 }
 
 body {
   background-color: var(--bg-color);
-  color: var(--text-color);
-
-  font-family: 'Roboto', sans-serif;
-
-  display: grid;
-  min-height: 100vh;
 }
 
-button {
-  background-color: transparent;
+ button {
+  background-color: rgba(255, 0, 0, 0);
   border: none;
-
+  
   cursor: pointer;
 }
 
@@ -39,43 +35,74 @@ button {
 
 .play svg path,
 .pause svg path,
-.sound-on svg path {
-  fill: var(--primary-color);
+.set svg path,
+.stop svg path,
+.soundControls svg path{
+  fill: var(--text-color);
+  
 }
 
-button svg {
-  width: clamp(3.2rem, 2rem + 12vw, 6.4rem);
+
+span {
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+  align-items: center;
+  
 }
 
-main {
-  align-self: end;
-  justify-self: center;
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100svh;
+}
+
+.timerBox {
+  width: 321px;
+  
 }
 
 #timer {
-  font-size: clamp(4rem, 4rem + 10vw, 8.8rem);
-
+  font-size: 128px;
+  
   display: flex;
   margin-bottom: 1.6rem;
 }
 
 #controls {
-  background-color: var(--bg-primary-light);
-
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 3.2rem;
-
-  border-radius: 9999px;
-
-  width: clamp(10rem, 10rem + 30vw, 22.8rem);
-  height: clamp(8rem, 5rem + 10vw, 10.8rem)
 }
 
-footer {
-  align-self: end;
-  justify-self: end;
+button svg {
+  width: clamp(3rem, 4rem + 1vw, 5rem);
+  height: clamp(3rem, 4rem + 1vw, 5rem);
+}
 
-  padding: 0 4rem 3.2rem 0;
+.soundControls {
+
+  width: 308px;
+  height: 336px;
+  display: grid;
+  align-content: center;
+  gap: 32px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.soundButton{
+  border-radius: 24px;
+  background-color: #E1E1E6;
+  border: none;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #02799D;
+}
+
+.soundControls svg.selected path{
+  fill: #E1E1E6;
+
 }

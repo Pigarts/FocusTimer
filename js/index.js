@@ -8,17 +8,36 @@ const {
   buttonPause,
   buttonStop,
   buttonSet,
+  buttonAdd5,
+  buttonRemove5,
   buttonSoundOn,
   buttonSoundOff,
   minutesDisplay,
   secondsDisplay,
+  rainSoundOn,
+  rainSoundOff,
+  storeSoundOn,
+  storeSoundOff,
+  fireSoundOn,
+  fireSoundOff
 } = elements
 
 const controls = Controls({
   buttonPause,
   buttonPlay,
   buttonSet,
-  buttonStop
+  buttonStop,
+  buttonAdd5,
+  buttonRemove5,
+  buttonSoundOn,
+  buttonSoundOff,
+  rainSoundOn,
+  rainSoundOff,
+  storeSoundOn,
+  storeSoundOff,
+  fireSoundOn,
+  fireSoundOff
+
 })
 
 const timer = Timer({
@@ -47,18 +66,57 @@ buttonStop.addEventListener('click', function() {
   timer.reset()
 })
 
-buttonSoundOff.addEventListener('click', function() {
-  sound.pressButton()
-  sound.bgAudio.play()  
-  buttonSoundOn.classList.remove('hide')
-  buttonSoundOff.classList.add('hide')
-})
-
 buttonSoundOn.addEventListener('click', function() {
   sound.pressButton()
-  sound.bgAudio.pause()
-  buttonSoundOn.classList.add('hide')
-  buttonSoundOff.classList.remove('hide')
+  sound.forestAudio.play()  
+  controls.soundOn()
+  console.log("forest")
+})
+
+
+buttonSoundOff.addEventListener('click', function() {
+  sound.pressButton()
+  sound.forestAudio.pause()
+  controls.soundOff()
+})
+
+rainSoundOn.addEventListener("click", function(){
+  controls.rainOn()
+  sound.pressButton()
+  sound.rainAudio.play() 
+  console.log("rain")
+})
+
+rainSoundOff.addEventListener("click", function(){
+  controls.rainOff()
+  sound.pressButton()
+  sound.rainAudio.pause()
+})
+
+storeSoundOn.addEventListener("click", function(){
+  controls.storeOn()
+  sound.pressButton()
+  sound.storeAudio.play() 
+  console.log("store")
+})
+
+storeSoundOff.addEventListener("click", function(){
+  controls.storeOff()
+  sound.pressButton()
+  sound.storeAudio.pause()
+})
+
+fireSoundOn.addEventListener("click", function(){
+  controls.fireOn()
+  sound.pressButton()
+  sound.fireAudio.play() 
+  console.log("fire")
+})
+
+fireSoundOff.addEventListener("click", function(){
+  controls.fireOff()
+  sound.pressButton()
+  sound.fireAudio.pause()
 })
 
 buttonSet.addEventListener('click', function() {
@@ -72,4 +130,13 @@ buttonSet.addEventListener('click', function() {
 
   timer.updateDisplay(newMinutes, 0)
   timer.updateMinutes(newMinutes)
+})
+
+buttonAdd5.addEventListener("click", function() {
+  timer.addFiveMinutes() 
+})
+
+buttonRemove5.addEventListener("click", function() {
+  timer.removeFiveMinutes()
+
 })

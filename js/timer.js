@@ -1,8 +1,10 @@
 
 import sounds from "./audios.js"
+let seconds
+let minutes 
 export default function Timer({ 
   minutesDisplay, 
-  secondsDisplay, 
+  secondsDisplay,
   resetControls
 }) {
 
@@ -47,10 +49,29 @@ export default function Timer({
       countdown()
     }, 1000)
   }
+  
+  function addFiveMinutes(){        
+    minutes = Number(minutes) + 5
+   
+    updateDisplay(minutes, seconds)
+  }
 
+  function removeFiveMinutes(){      
+    if(minutes <= 5){
+      return
+    }
+    
+    minutes = Number(minutes) - 5
+   
+    updateDisplay(minutes)
+  }
+
+  
+  
   function updateMinutes(newMinutes) {
     minutes = newMinutes
   }
+  
 
   function hold() {
     clearTimeout(timerTimeOut)
@@ -61,6 +82,8 @@ export default function Timer({
     reset,
     updateDisplay,
     updateMinutes,
+    addFiveMinutes,
+    removeFiveMinutes,
     hold
   }
 }
