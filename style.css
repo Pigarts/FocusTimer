@@ -6,14 +6,15 @@
 
 :root {
   --bg-color: hsl(0, 0%, 100%);
-  --bg-color-dark: hsl(0, 0%, 0%);
+  --bg-color-dark: #121214;
 
   
   --text-color: #000000;
   --text-dark-color: #ffffff;
-  --buttons-color: #0000ff;
+  --buttons-bg-color: #E1E1E6;
   --selected-color: #02799D;
-  --buttons-dark-color: #ffffff;
+  --buttons-dark-color: #C4C4CC;
+  --buttons-light-color: #000000;
 
   font-size: 62.5%;
 }
@@ -23,9 +24,8 @@ body {
 }
 
  button {
-  background-color: rgba(255, 0, 0, 0);
+  background-color: transparent;
   border: none;
-  
   cursor: pointer;
 }
 
@@ -33,24 +33,21 @@ body {
   display: none;
 }
 
-.play svg path,
-.pause svg path,
-.set svg path,
-.stop svg path,
-.soundControls svg path{
-  fill: var(--text-color);
+svg path {
+  fill: var(--buttons-light-color);
   
 }
-
 
 span {
   color: var(--text-color);
   font-family: 'Roboto', sans-serif;
   align-items: center;
-  
 }
 
+
+
 .page {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -64,24 +61,19 @@ span {
 
 #timer {
   font-size: 128px;
-  
   display: flex;
   margin-bottom: 1.6rem;
 }
 
 #controls {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   gap: 3.2rem;
 }
 
-button svg {
-  width: clamp(3rem, 4rem + 1vw, 5rem);
-  height: clamp(3rem, 4rem + 1vw, 5rem);
-}
 
 .soundControls {
-
   width: 308px;
   height: 336px;
   display: grid;
@@ -91,9 +83,9 @@ button svg {
   grid-template-rows: 1fr 1fr;
 }
 
-.soundButton{
+.soundButton {
   border-radius: 24px;
-  background-color: #E1E1E6;
+  background-color: var(--buttons-bg-color);
   border: none;
   cursor: pointer;
 }
@@ -103,6 +95,58 @@ button svg {
 }
 
 .soundControls svg.selected path{
-  fill: #E1E1E6;
+  fill: #ffffff;
 
 }
+
+
+.darkLightButtons button.darkMode, .darkLightButtons button.darkMode svg path {
+  position: absolute;
+  z-index: 1;
+  top: 64px;
+  right: 64px;
+
+  fill: #000000;
+}
+
+.darkLightButtons button {
+
+}
+
+.darkLightButtons button.lightMode, .darkLightButtons button.lightMode svg path {
+  position: absolute;
+  z-index: 1;
+  top: 64px;
+  right: 64px;
+
+
+  fill: #ffffff;
+  }
+  
+
+  /* dark mode */
+  
+  .page.darkMode {
+    background-color: var(--bg-color-dark);
+  }
+  
+  .darkMode path {
+    fill: var(--buttons-dark-color);
+  }
+  
+  .soundButton.darkMode {
+    background-color: #29292E;
+  }
+
+  .soundButton.selected.darkMode {
+    background-color: #0A3442;
+  }
+
+svg.selected {
+  background-color: transparent;
+}
+
+  span.darkMode {
+    color: var(--text-dark-color);
+  }
+  

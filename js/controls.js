@@ -3,8 +3,6 @@ export default function Controls({
   buttonPlay,
   buttonSet,
   buttonStop,
-  buttonAdd5,
-  buttonRemove5,
   buttonSoundOn,
   buttonSoundOff,
   rainSoundOn,
@@ -12,7 +10,13 @@ export default function Controls({
   storeSoundOn,
   storeSoundOff,
   fireSoundOn,
-  fireSoundOff
+  fireSoundOff,
+  buttonDarkMode,
+  buttonLightMode,
+  backGround,
+  timerText,
+  svg,
+  soundButtonsBg
 }) {
 
   function play() {
@@ -84,7 +88,34 @@ function getMinutes() {
   return newMinutes
 }
 
+function darkMode() {
+  buttonDarkMode.classList.toggle("hide");
+  buttonLightMode.classList.toggle("hide");
+  backGround.classList.toggle("darkMode");
+  timerText.forEach(timerText => {
+    timerText.classList.toggle('darkMode');
+  });
+  svg.classList.toggle("darkMode");
+  soundButtonsBg.forEach(soundButtonsBg => {
+    soundButtonsBg.classList.toggle('darkMode');
+  });
+  
+  
 
+}
+
+function lightMode() {
+  buttonLightMode.classList.toggle("hide");
+  buttonDarkMode.classList.toggle("hide");
+  backGround.classList.toggle("darkMode");
+  timerText.forEach(timerText => {
+    timerText.classList.toggle('darkMode');
+  });
+  svg.classList.toggle("darkMode");
+  soundButtonsBg.forEach(soundButtonsBg => {
+    soundButtonsBg.classList.toggle('darkMode');
+  });
+}
 
 
 
@@ -101,5 +132,7 @@ function getMinutes() {
     fireOn,
     fireOff,
     getMinutes,
+    darkMode,
+    lightMode
   }
 }

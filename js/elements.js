@@ -1,7 +1,3 @@
-
-
-
-
 const buttonPlay = document.querySelector('.play')
 const buttonPause = document.querySelector('.pause')
 const buttonStop = document.querySelector('.stop')
@@ -18,6 +14,12 @@ const fireSoundOn = document.querySelector('.fire-sound-on')
 const fireSoundOff = document.querySelector('.fire-sound-off')
 const minutesDisplay = document.querySelector('.minutes')
 const secondsDisplay = document.querySelector('.seconds')
+const buttonDarkMode = document.querySelector(".darkMode")
+const buttonLightMode = document.querySelector(".lightMode")
+const backGround = document.querySelector(".page")
+const timerText = document.querySelectorAll(".span")
+const svg = document.querySelector("svg")
+const soundButtonsBg = document.querySelectorAll('.soundButton');
 
 export const elements = {
     buttonPlay,
@@ -36,4 +38,10 @@ export const elements = {
     fireSoundOff,
     minutesDisplay,
     secondsDisplay,
+    buttonDarkMode,
+    buttonLightMode,
+    backGround,
+    timerText,
+    svg,
+    soundButtonsBg
 }

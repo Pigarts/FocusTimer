@@ -19,7 +19,13 @@ const {
   storeSoundOn,
   storeSoundOff,
   fireSoundOn,
-  fireSoundOff
+  fireSoundOff,
+  buttonDarkMode,
+  buttonLightMode,
+  backGround,
+  timerText,
+  svg,
+  soundButtonsBg
 } = elements
 
 const controls = Controls({
@@ -36,8 +42,13 @@ const controls = Controls({
   storeSoundOn,
   storeSoundOff,
   fireSoundOn,
-  fireSoundOff
-
+  fireSoundOff,
+  buttonDarkMode,
+  buttonLightMode,
+  backGround,
+  timerText,
+  svg,
+  soundButtonsBg
 })
 
 const timer = Timer({
@@ -138,5 +149,14 @@ buttonAdd5.addEventListener("click", function() {
 
 buttonRemove5.addEventListener("click", function() {
   timer.removeFiveMinutes()
+})
 
+buttonDarkMode.addEventListener("click", function() {
+  sound.pressButton()
+  controls.darkMode()
+})
+
+buttonLightMode.addEventListener("click", function() {
+  sound.pressButton()
+  controls.lightMode()
 })
