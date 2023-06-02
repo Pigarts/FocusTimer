@@ -3,6 +3,7 @@ import Timer from "./timer.js"
 import { elements } from "./elements.js"
 import sounds from "./audios.js"
 
+
 const {
   buttonPlay,
   buttonPause,
@@ -11,21 +12,21 @@ const {
   buttonAdd5,
   buttonRemove5,
   buttonSoundOn,
-  buttonSoundOff,
   minutesDisplay,
   secondsDisplay,
   rainSoundOn,
-  rainSoundOff,
   storeSoundOn,
-  storeSoundOff,
   fireSoundOn,
-  fireSoundOff,
   buttonDarkMode,
   buttonLightMode,
   backGround,
   timerText,
   svg,
-  soundButtonsBg
+  soundButtonsBg,
+  forestSlider,
+  raiSlider,
+  storeSlider,
+  fireSlider
 } = elements
 
 const controls = Controls({
@@ -36,19 +37,19 @@ const controls = Controls({
   buttonAdd5,
   buttonRemove5,
   buttonSoundOn,
-  buttonSoundOff,
   rainSoundOn,
-  rainSoundOff,
   storeSoundOn,
-  storeSoundOff,
   fireSoundOn,
-  fireSoundOff,
   buttonDarkMode,
   buttonLightMode,
   backGround,
   timerText,
   svg,
-  soundButtonsBg
+  soundButtonsBg,
+  forestSlider,
+  raiSlider,
+  storeSlider,
+  fireSlider
 })
 
 const timer = Timer({
@@ -77,57 +78,36 @@ buttonStop.addEventListener('click', function() {
   timer.reset()
 })
 
+forestSlider.addEventListener('input', () => {sound.forestAudio.volume = forestSlider.value / 100; });
+forestSlider.addEventListener("click", (event) => {event.stopPropagation();});
 buttonSoundOn.addEventListener('click', function() {
   sound.pressButton()
-  sound.forestAudio.play()  
   controls.soundOn()
-  console.log("forest")
+  sound.forestAudio.paused ? sound.forestAudio.play() : sound.forestAudio.pause();   
 })
 
-
-buttonSoundOff.addEventListener('click', function() {
-  sound.pressButton()
-  sound.forestAudio.pause()
-  controls.soundOff()
-})
-
+rainSlider.addEventListener('input', () => {sound.rainAudio.volume = rainSlider.value / 100; });
+rainSlider.addEventListener("click", (event) => {event.stopPropagation();});
 rainSoundOn.addEventListener("click", function(){
+  sound.pressButton()
   controls.rainOn()
-  sound.pressButton()
-  sound.rainAudio.play() 
-  console.log("rain")
+  sound.rainAudio.paused ? sound.rainAudio.play() : sound.rainAudio.pause();   
 })
 
-rainSoundOff.addEventListener("click", function(){
-  controls.rainOff()
-  sound.pressButton()
-  sound.rainAudio.pause()
-})
-
+storeSlider.addEventListener('input', () => {sound.storeAudio.volume = storeSlider.value / 100;});
+storeSlider.addEventListener("click", (event) => {event.stopPropagation();});
 storeSoundOn.addEventListener("click", function(){
+  sound.pressButton()
   controls.storeOn()
-  sound.pressButton()
-  sound.storeAudio.play() 
-  console.log("store")
+  sound.storeAudio.paused ? sound.storeAudio.play() : sound.storeAudio.pause();
 })
 
-storeSoundOff.addEventListener("click", function(){
-  controls.storeOff()
-  sound.pressButton()
-  sound.storeAudio.pause()
-})
-
+fireSlider.addEventListener('input', () => {sound.fireAudio.volume = fireSlider.value / 100; })
+fireSlider.addEventListener("click", (event) => {event.stopPropagation();});
 fireSoundOn.addEventListener("click", function(){
+  sound.pressButton()
   controls.fireOn()
-  sound.pressButton()
-  sound.fireAudio.play() 
-  console.log("fire")
-})
-
-fireSoundOff.addEventListener("click", function(){
-  controls.fireOff()
-  sound.pressButton()
-  sound.fireAudio.pause()
+  sound.fireAudio.paused ? sound.fireAudio.play() : sound.fireAudio.pause();  
 })
 
 buttonSet.addEventListener('click', function() {
@@ -138,16 +118,17 @@ buttonSet.addEventListener('click', function() {
     timer.reset()
     return
   }
-
   timer.updateDisplay(newMinutes, 0)
   timer.updateMinutes(newMinutes)
 })
 
 buttonAdd5.addEventListener("click", function() {
+  sound.pressButton()
   timer.addFiveMinutes() 
 })
 
 buttonRemove5.addEventListener("click", function() {
+  sound.pressButton()
   timer.removeFiveMinutes()
 })
 

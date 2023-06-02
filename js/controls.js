@@ -4,19 +4,16 @@ export default function Controls({
   buttonSet,
   buttonStop,
   buttonSoundOn,
-  buttonSoundOff,
   rainSoundOn,
-  rainSoundOff,
   storeSoundOn,
-  storeSoundOff,
   fireSoundOn,
-  fireSoundOff,
   buttonDarkMode,
   buttonLightMode,
   backGround,
   timerText,
   svg,
-  soundButtonsBg
+  soundButtonsBg,
+
 }) {
 
   function play() {
@@ -39,45 +36,21 @@ export default function Controls({
   }
 
   function soundOn() {
-    buttonSoundOn.classList.add('hide')
-    buttonSoundOff.classList.remove('hide')
-  }
-
-  function soundOff() {
-    buttonSoundOn.classList.remove('hide')
-    buttonSoundOff.classList.add('hide')
+    buttonSoundOn.classList.toggle('selected')
   }
 
 function rainOn() {
-  rainSoundOn.classList.add('hide')
-  rainSoundOff.classList.remove('hide')
+  rainSoundOn.classList.toggle('selected')
 }
 
-function rainOff() {
-  rainSoundOn.classList.remove('hide')
-  rainSoundOff.classList.add('hide')
-}
 
 function storeOn() {
-  storeSoundOn.classList.add('hide')
-  storeSoundOff.classList.remove('hide')
-}
-
-function storeOff() {
-  storeSoundOn.classList.remove('hide')
-  storeSoundOff.classList.add('hide')
+  storeSoundOn.classList.toggle('selected')
 }
 
 function fireOn() {
-  fireSoundOn.classList.add('hide')
-  fireSoundOff.classList.remove('hide')
+  fireSoundOn.classList.toggle('selected')
 }
-
-function fireOff() {
-  fireSoundOn.classList.remove('hide')
-  fireSoundOff.classList.add('hide')
-}
-
 
 function getMinutes() {
   let newMinutes = prompt('Quantos minutos?')
@@ -99,9 +72,6 @@ function darkMode() {
   soundButtonsBg.forEach(soundButtonsBg => {
     soundButtonsBg.classList.toggle('darkMode');
   });
-  
-  
-
 }
 
 function lightMode() {
@@ -124,13 +94,9 @@ function lightMode() {
     play,
     pause,
     soundOn,
-    soundOff,
     rainOn,
-    rainOff,
     storeOn,
-    storeOff,
     fireOn,
-    fireOff,
     getMinutes,
     darkMode,
     lightMode

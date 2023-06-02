@@ -5,14 +5,18 @@
 }
 
 :root {
-  --bg-color: hsl(0, 0%, 100%);
+  --bg-color: #ffffff;
   --bg-color-dark: #121214;
 
-  
   --text-color: #000000;
   --text-dark-color: #ffffff;
-  --buttons-bg-color: #E1E1E6;
-  --selected-color: #02799D;
+
+  --buttons-light-bg-color: #E1E1E6;
+  --buttons-dark-bg-color: #29292E;
+
+  --selected-light-color: #02799D;
+  --selected-dark-color: #0A3442;
+
   --buttons-dark-color: #C4C4CC;
   --buttons-light-color: #000000;
 
@@ -44,8 +48,6 @@ span {
   align-items: center;
 }
 
-
-
 .page {
   position: relative;
   display: flex;
@@ -56,7 +58,6 @@ span {
 
 .timerBox {
   width: 321px;
-  
 }
 
 #timer {
@@ -72,8 +73,8 @@ span {
   gap: 3.2rem;
 }
 
-
 .soundControls {
+  z-index: 2;
   width: 308px;
   height: 336px;
   display: grid;
@@ -85,20 +86,52 @@ span {
 
 .soundButton {
   border-radius: 24px;
-  background-color: var(--buttons-bg-color);
+  background-color: var(--buttons-light-bg-color);
   border: none;
   cursor: pointer;
 }
 
+.soundButton svg {
+margin-top: -10px;
+margin-bottom: 32px;
+}
+
+
+.sliderContainer {
+  display: flex;
+  width: 138px;
+  z-index: 5;
+}
+
+.slider {
+  border-radius: 20px;
+  height: 4px;
+  width: 66%;
+  appearance: none;
+  background: var(--buttons-light-color);
+  margin: 0 auto;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--buttons-light-color);
+}
+
 .selected {
-  background-color: #02799D;
+  background-color: var(--selected-light-color);
 }
 
-.soundControls svg.selected path{
+.soundButton.selected svg path{
   fill: #ffffff;
-
 }
 
+.soundButton.selected .slider,
+.soundButton.selected .slider::-webkit-slider-thumb{
+background: #ffffff;
+}
 
 .darkLightButtons button.darkMode, .darkLightButtons button.darkMode svg path {
   position: absolute;
@@ -107,10 +140,6 @@ span {
   right: 64px;
 
   fill: #000000;
-}
-
-.darkLightButtons button {
-
 }
 
 .darkLightButtons button.lightMode, .darkLightButtons button.lightMode svg path {
@@ -122,7 +151,6 @@ span {
 
   fill: #ffffff;
   }
-  
 
   /* dark mode */
   
@@ -135,11 +163,11 @@ span {
   }
   
   .soundButton.darkMode {
-    background-color: #29292E;
+    background-color: var(--buttons-dark-bg-color);
   }
 
   .soundButton.selected.darkMode {
-    background-color: #0A3442;
+    background-color: var(--selected-dark-color);
   }
 
 svg.selected {
@@ -150,3 +178,19 @@ svg.selected {
     color: var(--text-dark-color);
   }
   
+  button.darkMode .slider {
+    border-radius: 20px;
+    height: 4px;
+    width: 66%;
+    appearance: none;
+    background: var(--buttons-dark-color);
+    margin: 0 auto;
+  }
+  
+  button.darkMode .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--buttons-dark-color);
+  }
